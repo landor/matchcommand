@@ -7,6 +7,6 @@ Currently this just looks for file:line output in kint and opens the file to the
 If anyone cares it could easily be generalized to do custom matching and different local commands.
 
 Here are the changes to kint that it expects:
-'''html
+```html
 <span class="krumo-callee-file" data-filename="/path/to/file" data-linenumber="linenumber">kint shortened filename</span>
-'''
+```
