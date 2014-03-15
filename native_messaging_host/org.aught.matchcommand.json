@@ -1,0 +1,9 @@
+{
+  "name": "org.aught.matchcommand",
+  "description": "MatchCommand",
+  "path": "/home/landor/Documents/projects/aught/chrome/matchcommand/native_messaging_host/host.php",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://bkbkanmandkmjpehapkleopongefonil/"
+  ]
+}
