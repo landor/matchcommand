@@ -4,7 +4,6 @@ jQuery(document).ready(function($){
 
   // mangle xdebug to get picked up by krumo format
   $('.xdebug-error th').each(function(){
-    console.info(this.innerHTML);
     this.innerHTML = this.innerHTML.replace(/in (.+) on line <i>([0-9]+)<\/i>/g, "in <span class=\"krumo-callee-file\" data-filename=\"$1\" data-linenumber=\"$2\">$1</span> on line <i>$2</i>");
   });
   
