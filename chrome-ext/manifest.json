@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuvjrUNMw8kRJ9+KrDr7VldlstBCeBJKP9FF4GjT2UEeyCIEL2MgUkRkzNRjevJCXaThte87cnMd5H/7odySvETYbA5Hh2W1wbvQhqr9o+TL+2xe6qMuiLNh2EYWgRulYrah2/FX7uD1GIrOigzQMBMomIAFRcoCVvBZfWZwk2CqJlT8JEDDSqx4xr4535LnPXJid03EUdDDg3LiCTKEskseosQHTo1M+bqRzMnh5Ea+B7O216f1y7YqnAvbAH84LawtzWxqv1fIJCbJBTXBTffaZqoJz2MgyNFrmhMCsF2VMO2of+selsTnX2kXPldnRnpMTPru16vazQ0dVrw8L5wIDAQAB",
+  "name": "MatchCommand",
+  "description": "Match things on pages and run external commands",
+  "version": "0.1",
+  "permissions": ["tabs", "debugger", "http://*/", "https://*/*", "webNavigation", "storage", "<all_urls>", "nativeMessaging"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["js/jquery-2.1.3.min.js", "js/content.js"]
+    }
+  ],
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  }
+}

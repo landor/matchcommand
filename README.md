@@ -1,16 +1,31 @@
-matchcommand
+MatchCommand
 ============
 
-A rough chrome extension to look for text on pages and a php native messaging host to run commands based on matches.
+A chrome extension to make links out of matching text on pages and a php native messaging host to run commands when links are clicked.
 
-All the behavior is hard coded. If anyone cares it could easily be generalized to do custom matching and local commands.
+All the behavior is currently hard coded. It could easily be generalized to do custom matching and local commands so I'm open to feature requests.
 
 This will currently match:
- * modified kint output
+ * [modified kint output](#kint-modifications)
  * xdebug output
- It turns filenames into links which open the file to the indicated line in my editor, Sublime Text.
+Filenames are turned into links which open the file to the indicated line in Sublime Text 3.
 
-Here are the changes to kint that it expects:
+## Install
+
+### Register the native messaging host with Chrome
+
+Copy `host/org.aught.matchcommand.json` to the [appropriate chrome directory](https://developer.chrome.com/extensions/nativeMessaging#native-messaging-host-location).
+```
+mkdir -p ~/.config/chromium/NativeMessagingHosts
+cp host/org.aught.matchcommand.json ~/.config/chromium/NativeMessagingHosts/
+```
+Set the correct **path** value in the new `org.aught.matchcommand.json`. It should be the absolute path to `host/host.php`.
+
+
+### <a name="kint-modifications"></a>Modifications to Kint
+
+The filename and line number are needed as data attributes.
+
 ```html
 <span class="krumo-callee-file" data-filename="/path/to/file" data-linenumber="linenumber">kint shortened filename</span>
 ```

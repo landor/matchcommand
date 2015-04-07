@@ -3,6 +3,7 @@
 
 function logmsg($msg) {
   $msg = '[' . date('Y-m-d H:i:s') . ' - ' . getmypid() . '] ' . $msg . "\n";
+  // uncomment this line to create a log file
   // file_put_contents (__DIR__ . '/log.txt', $msg, FILE_APPEND);
 }
 
@@ -14,6 +15,7 @@ $stdout = fopen('php://stdout', 'b');
 stream_set_blocking($stdin, 0);
 
 $autodestruct = 10000;
+$request_handled = false;
 do {
 
   $request = fgets($stdin);
@@ -25,7 +27,7 @@ do {
 
     $request = json_decode($request);
 
-    $cmd = 'subl ' . $request->filename . ':' . $request->linenumber;
+    $cmd = 'subl3 ' . $request->filename . ':' . $request->linenumber;
     logmsg($cmd);
     exec($cmd);
 
@@ -37,10 +39,11 @@ do {
     logmsg('response: ' . $response);
 
     fwrite($stdout, $response_pack . $response);
+    $request_handled = true;
   }
 
-  usleep(10000);
-} while ($autodestruct-- > 0);
+  if (! $request_handled) usleep(10000);
+} while ($autodestruct-- > 0 || ! $request_handled);
 
 
 logmsg('end');
