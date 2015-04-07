@@ -16,7 +16,8 @@ Filenames are turned into links which open the file to the indicated line in Sub
 ### Register the native messaging host with Chrome
 
 Copy `host/org.aught.matchcommand.json` to the [appropriate chrome directory](https://developer.chrome.com/extensions/nativeMessaging#native-messaging-host-location).
-Example for linux using Chromium:
+
+Example using Linux and Chromium:
 ```
 mkdir -p ~/.config/chromium/NativeMessagingHosts
 cp host/org.aught.matchcommand.json ~/.config/chromium/NativeMessagingHosts/
